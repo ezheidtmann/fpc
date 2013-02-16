@@ -16,7 +16,7 @@ service mysql restart
 
 # database
 mysql -u root -proot <<EOF
-CREATE DATABASE IF NOT EXISTS vagrant_va;
+CREATE DATABASE IF NOT EXISTS vagrant_fpc;
 GRANT ALL ON *.* TO root IDENTIFIED BY 'root';
 EOF
 
@@ -41,7 +41,7 @@ if ! grep -iq vagrant /etc/apache2/sites-available/default; then
 fi
 
 # add links to vagrant-specific settings.php
-for site in va; do
+for site in fpc; do
   cp /vagrant/vagrant/settings.php "/server/htdocs/sites/$site/"
   chmod -R 777 "/server/htdocs/sites/$site/files"
 done
