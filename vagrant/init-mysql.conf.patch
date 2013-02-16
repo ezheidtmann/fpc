@@ -1,0 +1,24 @@
+--- /etc/init/mysql.conf	2012-02-20 01:59:00.000000000 +0000
++++ /vagrant/vagrant/init-mysql.conf	2013-02-05 17:09:14.548998676 +0000
+@@ -16,6 +16,10 @@
+ kill timeout 300
+ 
+ pre-start script
++    # DANGER ZONE tmpfs db storage
++    mount -t tmpfs -o rw,nosuid,nodev,noexec,uid=`id -u mysql`,gid=`id -g mysql` tmpfs /var/lib/mysql
++    cp -a /var/lib/.mysql/* /var/lib/mysql
++
+     #Sanity checks
+     [ -r $HOME/my.cnf ]
+     [ -d /var/run/mysqld ] || install -m 755 -o mysql -g root -d /var/run/mysqld
+@@ -42,3 +46,10 @@
+     done
+     exit 1
+ end script
++
++post-stop script
++    # leave the DANGER ZONE of tmpfs db storage
++    rsync -a --delete /var/lib/mysql/ /var/lib/.mysql
++    umount /var/lib/mysql/
++end script
++
