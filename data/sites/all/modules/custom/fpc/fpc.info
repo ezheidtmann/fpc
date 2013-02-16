@@ -7,3 +7,4 @@ dependencies[] = leaflet
 dependencies[] = views
 dependencies[] = views_ui
 dependencies[] = geofield
+dependencies[] = leaflet_widget
