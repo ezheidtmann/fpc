@@ -55,8 +55,8 @@ Vagrant::Config.run do |config|
       config.vm.provision :shell, :path => 'vagrant/setup.sh', :args => username
       config.vm.provision :shell, :path => 'vagrant/run.sh'
 
-      config.vm.forward_port 80,   4080
-      config.vm.forward_port 3306, 4006
+      config.vm.forward_port 80,   5080
+      config.vm.forward_port 3306, 5006
     end
   end
 end
