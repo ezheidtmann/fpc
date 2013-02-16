@@ -28,17 +28,16 @@ username = %x[ whoami ]
 
 Vagrant::Config.run do |config|
   vm_default = proc do |cnf|
-    #cnf.vm.box_url = "http://files.vagrantup.com/precise64.box"
-	cnf.vm.box_url = "http://bastion.squishyclients.net/precise64_squishy_2013-02-09.box"
-	cnf.vm.box = "precise64_squishy_2013-02-09"
+    cnf.vm.box_url = "http://bastion.squishyclients.net/precise64_squishy_2013-02-09.box"
+    cnf.vm.box = "precise64_squishy_2013-02-09"
     cnf.vm.customize ["modifyvm", :id, "--memory", 1024]
 
     # attempt to fix "read-only filesystem" errors in Mac OS X
     # see: https://github.com/mitchellh/vagrant/issues/713
     cnf.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
     cnf.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/server", "1"]
-	# NFS mount needs hostonly net
-	config.vm.network :hostonly, "10.11.12.13"
+    # NFS mount needs hostonly net
+    cnf.vm.network :hostonly, "10.11.12.13"
     # Mount webroot
     #cnf.vm.share_folder "server", "/server", ".", :owner => "www-data", :group => "www-data"
     cnf.vm.share_folder "server", "/server", ".", :nfs => true
