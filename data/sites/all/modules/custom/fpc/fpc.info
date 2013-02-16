@@ -1,0 +1,9 @@
+name = FPC Custom
+description = Miscellaneous custom code for FPC
+core = 7.x
+
+; site dependencies
+dependencies[] = leaflet
+dependencies[] = views
+dependencies[] = views_ui
+dependencies[] = geofield
