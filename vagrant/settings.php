@@ -568,7 +568,7 @@ $conf['drupal_http_request_fails'] = FALSE;
 #
 # Memcache config
 include_once DRUPAL_ROOT . '/includes/cache.inc';
-include_once DRUPAL_ROOT . '/sites/all/modules/contrib/contrib_performance/memcache/memcache.inc';
+include_once DRUPAL_ROOT . '/sites/all/modules/contrib/memcache/memcache.inc';
 $conf['cache_class_form'] = 'DrupalDatabaseCache';
 $conf['cache_default_class'] = 'MemCacheDrupal';
 $conf['memcache_servers'] = array('localhost:11211' => 'default');
