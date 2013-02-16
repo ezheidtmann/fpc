@@ -1,0 +1,39 @@
+Tiles
+======
+
+If we're using OSM data, we should probably be hosting our own tiles
+for forest park. Better to host our own stuff than to rely on outside
+services when most of our maps show the same regions. 
+
+For a pretty generous coverage of FP and immediately surrounding roads,
+we need about 350MB:
+  
+  python countTiles.py "12, 18, -122.8374, 45.5097, -122.6833, 45.6246"
+    Geographic area:
+      -122.837400	left most Longitude (minLong)
+      45.509700	bottom most Latitude (minLat)
+      -122.683300	right most Longitude (maxLong)
+      45.624600	top most Latitude (maxLat)
+    Zoom coverage:
+      12	least detailed zoom
+      18	most detailed zoom
+    Total tiles:
+      18274
+    Total size (at an average of 20KB per tile):
+      0.35 GB
+
+    SETUP cost: $0.23
+    (One time cost: $0.04 storage, $0.18 posting)
+    (Note: If there is a data update, apply this setup cost again.)
+
+    MONTHLY viewing costs:
+         10000 visits: $6.46,	with cloudfront: $12.92
+        250000 visits: $164.32,	with cloudfront: $328.64
+       1000000 visits: $657.64,	with cloudfront: $1315.29
+      10000000 visits: $6577.52,	with cloudfront: $13155.03
+
+    (Assumption: Each map visitor will request 200 tiles (load map, pan pan pan pan pan)
+    (Note: CloudFront is a distributed content delivery network that makes viewing your tiles faster...
+      Amazon charges once for getting it out of the S3 bucket and into CF again for the CF view...
+      If all the views are in the same spot, 1/2 the CF cost listed here. If viewing many random
+      places,this value.)
