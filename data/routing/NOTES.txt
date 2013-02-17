@@ -1,0 +1,3 @@
+astar.js: http://will.thimbleby.net/a-shortest-path-in-javascript/
+
+The algorithm: http://theory.stanford.edu/~amitp/GameProgramming/
